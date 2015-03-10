@@ -25,8 +25,8 @@ class CatalogController < ApplicationController
     #  # :q => '{!raw f=id v=$id}' 
     #}
 
-    # solr field configuration for search results/index views
-    config.index.title_field = 'full_title_tesim'
+# solr field configuration for search results/index views
+    config.index.title_field = 'desc_metadata__title_tesim'
     config.index.display_type_field = 'content_metadata_type_ssm'
     config.index.thumbnail_field = Spotlight::Engine.config.thumbnail_field
 
@@ -63,6 +63,10 @@ class CatalogController < ApplicationController
     config.add_facet_field 'subject_geographic_ssim', :label => 'Geographic'
     config.add_facet_field 'subject_temporal_ssim', :label => 'Era'
     config.add_facet_field 'language_ssim', :label => 'Language'
+    config.add_facet_field 'desc_metadata__subject_tesim', :label => 'Subject'
+    config.add_facet_field 'desc_metadata__language_tesim', :label => 'Language'
+    config.add_facet_field 'desc_metadata__creator_tesim', :label => 'Creator'
+    config.add_facet_field 'desc_metadata__rights_tesim', :label => 'Rights'
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -71,6 +75,12 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display 
+    config.add_index_field 'desc_metadata__creator_tesim', :label => 'Creator'
+    config.add_index_field 'desc_metadata__description_tesim', :label => 'Description'
+    config.add_index_field 'desc_metadata__language_tesim', :label => 'Language'
+    config.add_index_field 'desc_metadata__subject_tesim', :label => 'Subject'
+    config.add_index_field 'desc_metadata__rights_tesim', :label => 'Rights'
+    config.add_index_field 'desc_metadata__contributor_tesim', :label => 'Contributor'
     config.add_index_field 'language_ssm', :label => 'Language'
     config.add_index_field 'abstract_tesim', :label => 'Abstract'
     config.add_index_field 'note_mapuse_tesim', :label => 'Type'
@@ -82,7 +92,7 @@ class CatalogController < ApplicationController
     config.add_index_field Spotlight::Engine.config.uploaded_date_field, :label => 'Date'
 
     # solr fields to be displayed in the show (single result) view
-    #   The ordering of the field names is the order of the display 
+    #   The ordering of the field names is the order of the display
     config.add_show_field 'note_phys_desc_tesim', :label => 'Note'
     config.add_show_field 'note_source_tesim', :label => 'Source'
     config.add_show_field 'note_desc_note_tesim', :label => 'Note'
