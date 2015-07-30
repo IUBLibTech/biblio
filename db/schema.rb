@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730170926) do
+ActiveRecord::Schema.define(version: 20150213173867) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer  "user_id",       null: false
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20150730170926) do
     t.string   "document_type"
   end
 
-  add_index "bookmarks", ["document_type", "document_id"], name: "index_bookmarks_on_document_type_and_document_id"
   add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id"
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -118,7 +117,6 @@ ActiveRecord::Schema.define(version: 20150730170926) do
     t.text     "configuration"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "field_type"
   end
 
   create_table "spotlight_exhibits", force: :cascade do |t|
@@ -134,26 +132,10 @@ ActiveRecord::Schema.define(version: 20150730170926) do
     t.boolean  "published",      default: true
     t.datetime "published_at"
     t.string   "featured_image"
-    t.integer  "masthead_id"
-    t.integer  "thumbnail_id"
   end
 
   add_index "spotlight_exhibits", ["default"], name: "index_spotlight_exhibits_on_default", unique: true
   add_index "spotlight_exhibits", ["slug"], name: "index_spotlight_exhibits_on_slug", unique: true
-
-  create_table "spotlight_featured_images", force: :cascade do |t|
-    t.string   "type"
-    t.boolean  "display"
-    t.string   "image"
-    t.string   "source"
-    t.string   "document_global_id"
-    t.integer  "image_crop_x"
-    t.integer  "image_crop_y"
-    t.integer  "image_crop_w"
-    t.integer  "image_crop_h"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "spotlight_locks", force: :cascade do |t|
     t.integer  "on_id"
@@ -173,7 +155,6 @@ ActiveRecord::Schema.define(version: 20150730170926) do
     t.integer  "exhibit_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "display",    default: true
   end
 
   add_index "spotlight_main_navigations", ["exhibit_id"], name: "index_spotlight_main_navigations_on_exhibit_id"
@@ -194,7 +175,6 @@ ActiveRecord::Schema.define(version: 20150730170926) do
     t.integer  "parent_page_id"
     t.boolean  "display_sidebar"
     t.boolean  "display_title"
-    t.integer  "thumbnail_id"
   end
 
   add_index "spotlight_pages", ["exhibit_id"], name: "index_spotlight_pages_on_exhibit_id"
@@ -227,13 +207,11 @@ ActiveRecord::Schema.define(version: 20150730170926) do
     t.text     "long_description"
     t.text     "query_params"
     t.integer  "weight"
-    t.boolean  "published"
+    t.boolean  "on_landing_page"
     t.integer  "exhibit_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "featured_item_id"
-    t.integer  "masthead_id"
-    t.integer  "thumbnail_id"
   end
 
   add_index "spotlight_searches", ["exhibit_id"], name: "index_spotlight_searches_on_exhibit_id"
@@ -241,15 +219,15 @@ ActiveRecord::Schema.define(version: 20150730170926) do
 
   create_table "spotlight_solr_document_sidecars", force: :cascade do |t|
     t.integer  "exhibit_id"
-    t.boolean  "public",        default: true
+    t.string   "solr_document_id"
+    t.boolean  "public",           default: true
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "document_id"
-    t.string   "document_type"
   end
 
   add_index "spotlight_solr_document_sidecars", ["exhibit_id"], name: "index_spotlight_solr_document_sidecars_on_exhibit_id"
+  add_index "spotlight_solr_document_sidecars", ["solr_document_id"], name: "index_spotlight_solr_document_sidecars_on_solr_document_id"
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
@@ -262,11 +240,9 @@ ActiveRecord::Schema.define(version: 20150730170926) do
   end
 
   add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
 
   create_table "tags", force: :cascade do |t|
-    t.string  "name"
-    t.integer "taggings_count", default: 0
+    t.string "name"
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true

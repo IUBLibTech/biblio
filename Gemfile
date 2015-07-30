@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -44,14 +44,12 @@ group :development, :test do
 end
 
 
-gem 'blacklight', '>=5.11.2'
+gem 'blacklight'
+gem 'blacklight-gallery', '>= 0.1.1'
 gem 'blacklight-spotlight', github: 'sul-dlss/spotlight'
-gem 'sir_trevor_rails', github: 'madebymany/sir-trevor-rails'
+gem 'sir_trevor_rails', github: 'sul-dlss/sir-trevor-rails'
 gem 'jettywrapper', '>= 2.0'
-gem 'rsolr', '~> 1.0.6'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
 gem 'friendly_id'
-gem 'blacklight-gallery', '>= 0.3.0'
-gem 'blacklight-oembed'
 gem 'social-share-button'
