@@ -22,6 +22,14 @@ class SolrDocument
   # single valued. See Blacklight::Solr::Document::ExtendableClassMethods#field_semantics
   # and Blacklight::Solr::Document#to_semantic_values
   # Recommendation: Use field names from Dublin Core
-  use_extension( Blacklight::Solr::Document::DublinCore)    
+  use_extension( Blacklight::Solr::Document::DublinCore)
+
+  def has_metadata_key?(key)
+    !self["desc_metadata__#{key}_tesim"].nil?
+  end
+
+  def metadata_value(key)
+    self["desc_metadata__#{key}_tesim"]
+  end
 
 end
