@@ -2,14 +2,16 @@
 <dl class="document-metadata dl-horizontal dl-invert">
 
   <% work_type = document[:human_readable_type_tesim].first %>
-  <% vocabs =  I18n.t work_type + '.fields' %>
+  <% unless Settings.work_types.to_hash[work_type.to_sym].nil? %>
+      <% fields =  Settings.work_types.to_hash[work_type.to_sym][:fields] %>
+  <% else %>
+      <% fields =  Settings.work_types.to_hash['Biblio Work'.to_sym][:fields] %>
+  <% end %>
 
-  <% vocabs.each do |vocab, fields| %>
-      <% fields.each do |key, value| %>
-          <% if document.has_metadata_key?(key) && value[:views].include?('index') %>
-              <dt class="blacklight-<%= key %>"><%= value[:label] %></dt>
-              <dd class="blacklight-<%= key %>"><%= document.metadata_value(key).to_sentence %></dd>
-          <% end %>
+  <% fields.each do |field, props| %>
+      <% if document.has_metadata_key?(field) && props[:views].include?('index') %>
+          <dt class="blacklight-<%= field %>"><%= props[:label] %></dt>
+          <dd class="blacklight-<%= field %>"><%= document.metadata_value(field).to_sentence %></dd>
       <% end %>
   <% end %>
 
