@@ -37,6 +37,13 @@ GIT
       tophat
       underscore-rails (~> 1.6.0)
 
+GIT
+  remote: https://github.com/cbeer/devise-guests.git
+  revision: 8ea012c1e3cd637d28158fbf0472e8c56a18a54c
+  specs:
+    devise-guests (0.4.0)
+      devise
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -139,8 +146,6 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    devise-guests (0.3.3)
-      devise
     erubis (2.7.0)
     execjs (2.3.0)
     faraday (0.9.1)
@@ -298,7 +303,7 @@ DEPENDENCIES
   blacklight-spotlight!
   coffee-rails (~> 4.1.0)
   devise
-  devise-guests (~> 0.3)
+  devise-guests!
   friendly_id
   jbuilder (~> 2.0)
   jettywrapper (>= 2.0)
