@@ -54,3 +54,5 @@ gem 'devise-guests', git: 'https://github.com/cbeer/devise-guests.git' #, '~> 0.
 gem 'omniauth-cas'
 gem 'friendly_id'
 gem 'social-share-button'
+gem 'listen', '~> 3.0'
+gem 'config'

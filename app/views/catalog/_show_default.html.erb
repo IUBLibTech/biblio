@@ -1,0 +1,16 @@
+<%# default partial to display solr document fields in catalog show view -%>
+<dl class="dl-horizontal  dl-invert">
+  <% work_type = document[:human_readable_type_tesim].first %>
+  <% unless Settings.work_types.to_hash[work_type.to_sym].nil? %>
+      <% fields =  Settings.work_types.to_hash[work_type.to_sym][:fields] %>
+  <% else %>
+      <% fields =  Settings.work_types.to_hash['Biblio Work'.to_sym][:fields] %>
+  <% end %>
+
+  <% fields.each do |field, props| %>
+      <% if document.has_metadata_key?(field) && props[:views].include?('show') %>
+          <dt class="blacklight-<%= field %>"><%= props[:label] %></dt>
+          <dd class="blacklight-<%= field %>"><%= document.metadata_value(field).to_sentence %></dd>
+      <% end %>
+  <% end %>
+</dl>
