@@ -37,6 +37,13 @@ GIT
       tophat
       underscore-rails (~> 1.6.0)
 
+GIT
+  remote: https://github.com/cbeer/devise-guests.git
+  revision: 8ea012c1e3cd637d28158fbf0472e8c56a18a54c
+  specs:
+    devise-guests (0.4.0)
+      devise
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -81,6 +88,7 @@ GEM
       actionpack (>= 3, < 5)
       activerecord (>= 3, < 5)
       activesupport (>= 3, < 5)
+    addressable (2.3.7)
     arel (6.0.0)
     autoprefixer-rails (4.0.2.2)
       execjs
@@ -138,8 +146,6 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    devise-guests (0.3.3)
-      devise
     erubis (2.7.0)
     execjs (2.3.0)
     faraday (0.9.1)
@@ -153,6 +159,7 @@ GEM
       posix-spawn (~> 0.3.8)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
+    hashie (3.4.2)
     hike (1.2.3)
     i18n (0.7.0)
     jbuilder (2.2.6)
@@ -190,6 +197,13 @@ GEM
     multipart-post (2.0.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    omniauth (1.2.2)
+      hashie (>= 1.2, < 4)
+      rack (~> 1.0)
+    omniauth-cas (1.1.0)
+      addressable (~> 2.3)
+      nokogiri (~> 1.5)
+      omniauth (~> 1.2.0)
     openseadragon (0.0.9)
       rails (> 3.2.0)
     orm_adapter (0.5.0)
@@ -289,11 +303,12 @@ DEPENDENCIES
   blacklight-spotlight!
   coffee-rails (~> 4.1.0)
   devise
-  devise-guests (~> 0.3)
+  devise-guests!
   friendly_id
   jbuilder (~> 2.0)
   jettywrapper (>= 2.0)
   jquery-rails
+  omniauth-cas
   rails (= 4.2.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
