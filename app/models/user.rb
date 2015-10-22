@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   include Spotlight::User
-  # attr_accessible :email, :password, :password_confirmation if Rails::VERSION::MAJOR < 4
+  attr_accessible :email, :password, :password_confirmation if Rails::VERSION::MAJOR < 4
 # Connects this user object to Blacklights Bookmarks. 
   include Blacklight::User
   # Include default devise modules. Others available are:
