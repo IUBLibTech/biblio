@@ -57,16 +57,24 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
-    config.add_facet_field 'genre_ssim', :label => 'Genre', :limit => true
-    config.add_facet_field 'personal_name_ssm', :label => 'Personal Names', :limit => true
-    config.add_facet_field 'corporate_name_ssm', :label => 'Corporate Names', :limit => true
-    config.add_facet_field 'subject_geographic_ssim', :label => 'Geographic'
-    config.add_facet_field 'subject_temporal_ssim', :label => 'Era'
-    config.add_facet_field 'language_ssim', :label => 'Language'
-    config.add_facet_field 'desc_metadata__subject_tesim', :label => 'Subject'
-    config.add_facet_field 'desc_metadata__language_tesim', :label => 'Language'
-    config.add_facet_field 'desc_metadata__creator_tesim', :label => 'Creator'
-    config.add_facet_field 'desc_metadata__rights_tesim', :label => 'Rights'
+    config.add_facet_field 'desc_metadata__date_ssi', :label => 'Year', :limit => true
+    config.add_facet_field 'desc_metadata__Genre_sim', :label => 'Genre', :limit => true
+    config.add_facet_field 'desc_metadata__publicationChannelName_sim', :label => 'Publisher', :limit => true
+    config.add_facet_field 'desc_metadata__creator_sim', :label => 'Creator', :limit => true
+    config.add_facet_field 'desc_metadata__singer_sim', :label => 'Soloist', :limit => true
+    config.add_facet_field 'desc_metadata__Orchestration_sim', :label => 'Orchestra', :limit => true
+    config.add_facet_field 'desc_metadata__Series_sim', :label => 'Series', :limit => true
+
+    #config.add_facet_field 'genre_ssim', :label => 'Genre', :limit => true
+    #config.add_facet_field 'personal_name_ssm', :label => 'Personal Names', :limit => true
+    #config.add_facet_field 'corporate_name_ssm', :label => 'Corporate Names', :limit => true
+    #config.add_facet_field 'subject_geographic_ssim', :label => 'Geographic'
+    #config.add_facet_field 'subject_temporal_ssim', :label => 'Era'
+    #config.add_facet_field 'language_ssim', :label => 'Language'
+    #config.add_facet_field 'desc_metadata__subject_tesim', :label => 'Subject'
+    #config.add_facet_field 'desc_metadata__language_tesim', :label => 'Language'
+    #config.add_facet_field 'desc_metadata__creator_tesim', :label => 'Creator'
+    #config.add_facet_field 'desc_metadata__rights_tesim', :label => 'Rights'
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
