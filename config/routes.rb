@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   mount Blacklight::Oembed::Engine, at: 'oembed'
-  spotlight_root
+  root to: 'spotlight/exhibits#index'
   mount Spotlight::Engine, at: 'spotlight'
-#  root :to => "catalog#index" # replaced by spotlight_root
+#  root to: "catalog#index" # replaced by spotlight root path
   blacklight_for :catalog
   devise_for :users, skip: [:sessions], controllers: { :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_scope :user do

@@ -19,6 +19,7 @@
 # Ignore files uploaded by spotlight
 /public/uploads
 
+/jetty
 
 # Ignore RubyMine directory
 # From https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
