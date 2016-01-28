@@ -60,7 +60,14 @@
     </lst>
   </requestHandler>
 
-  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" /> 
+  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" />
+
+  <requestHandler name="standard" class="solr.SearchHandler">
+    <lst name="defaults">
+      <str name="echoParams">explicit</str>
+      <str name="defType">lucene</str>
+    </lst>
+  </requestHandler>
   
   <requestDispatcher handleSelect="true" >
     <requestParsers enableRemoteStreaming="true" multipartUploadLimitInKB="2048" />
