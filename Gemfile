@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.5.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -44,12 +44,12 @@ group :development do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  #gem 'spring'
 end
 
 
 gem 'blacklight', '~> 5.16'
-gem 'blacklight-spotlight', github: 'sul-dlss/spotlight'
+gem 'blacklight-spotlight', '~> 0.16'    #, github: 'sul-dlss/spotlight'
 gem 'jettywrapper', '>= 2.0'
 gem 'rsolr', '~> 1.0.6'
 gem 'devise'
@@ -58,7 +58,7 @@ gem 'devise_invitable'
 gem 'omniauth-cas'
 gem 'friendly_id'
 gem 'sitemap_generator'
-gem 'blacklight-gallery', '>= 0.3.0'
+gem 'blacklight-gallery'
 gem 'blacklight-oembed'
 gem 'social-share-button'
 gem 'listen', '~> 3.0'
