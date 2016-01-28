@@ -25,6 +25,6 @@ module Biblio
     config.active_record.raise_in_transactional_callbacks = true
 
     # Force SSL
-    config.force_ssl = true
+    #config.force_ssl = true
   end
 end
